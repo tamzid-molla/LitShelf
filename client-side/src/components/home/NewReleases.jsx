@@ -53,11 +53,13 @@ const NewReleases = ({books}) => {
               <span className="absolute top-2 right-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
                 New
               </span>
-              <img
+                        <div className="flex justify-center py-3">
+                          <img
                 src={book.cover_photo}
                 alt={book.book_title}
-                className="w-full h-64 object-cover"
+                className="w-auto h-64 object-cover"
               />
+              </div>
               <div className="p-4">
                 <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 line-clamp-2">
                   {book.book_title}

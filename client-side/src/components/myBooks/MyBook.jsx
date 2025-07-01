@@ -45,9 +45,9 @@ const MyBook = ({myBook,setMyBooks}) => {
 
   return (
     <div className="max-w-sm rounded-2xl overflow-hidden p-2 shadow-lg bg-base-secondary dark:bg-darkBase-secondary m-4 hover:shadow-2xl">
-      <div className="relative">
+      <div className="relative flex justify-center">
         <img
-          className="w-full h-64 object-cover rounded-lg"
+          className="w-auto h-64 p-2 object-cover rounded-lg"
           src={cover_photo}
           alt={book_title}
         />
@@ -77,7 +77,7 @@ const MyBook = ({myBook,setMyBooks}) => {
           Added by: {user_name} ({user_email})
         </div>
       </div>
-      <div className="px-6 pt-2 pb-4 flex justify-between">
+      <div className="px-6 pt-2 pb-4 flex h-full items-end justify-between">
         <Link to={`/updateBook/${myBook._id}`}>
           <button className="flex items-center cursor-pointer bg-bgBtn text-textBtn px-4 py-2 rounded-lg hover:bg-hoverBtn transition duration-200">
             <FaEdit className="mr-2" /> Update

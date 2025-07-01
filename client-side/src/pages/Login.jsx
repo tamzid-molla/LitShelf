@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { AuthContext } from "../context/FirebaseContext";
 import axios from "axios";
+import loginImg from "../assets/Login.png"
 
 const Login = () => {
   const location = useLocation();
@@ -100,67 +101,89 @@ const Login = () => {
   };
 
   return (
-    <div
-      className='min-h-screen flex items-center justify-center'>
-      <div
-        className='p-8 rounded-lg shadow-lg w-full mt-10 bg-base-secondary dark:bg-darkBase-secondary max-w-md'>
-        <h2 className="text-2xl font-bold text-center mb-6">
+     <div className="min-h-screen pt-16 mb-16 rounded-2xl px-4 md:px-8 bg-base-secondary w-11/12 mx-auto dark:bg-darkBase-secondary flex items-center justify-center">
+      <div className=" rounded-xl w-full max-w-5xl p-6 md:p-10">
+
+        {/* Heading */}
+        <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800 dark:text-white mb-10">
           Login Your Account
         </h2>
-        <form onSubmit={handleLogin} className="space-y-4">
-          <div className="relative">
-            <FaEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-IconText" />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              className='w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-InputRing'
-              required
-            />
+
+        {/* Grid layout: image + form */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          
+          {/* Image Side */}
+          <div className="hidden md:block">
+            <img src={loginImg} alt="Login Illustration" className="w-full h-auto object-contain" />
           </div>
-          <div className="relative">
-            <FaLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-IconText" />
-            {!showPass ? (
-              <button type="button" onClick={() => setShowPass(!showPass)}>
-                <FaEyeSlash className="absolute right-3 top-1/2 transform -translate-y-1/2 text-IconText cursor-pointer" />
+
+          {/* Form Side */}
+          <div>
+            <form onSubmit={handleLogin} className="space-y-4">
+
+              {/* Email Field */}
+              <div className="relative">
+                <FaEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-IconText" />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-InputRing"
+                  required
+                />
+              </div>
+
+              {/* Password Field */}
+              <div className="relative">
+                <FaLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-IconText" />
+                <button type="button" onClick={() => setShowPass(!showPass)}>
+                  {showPass ? (
+                    <FaRegEye className="absolute right-3 top-1/2 transform -translate-y-1/2 text-IconText cursor-pointer" />
+                  ) : (
+                    <FaEyeSlash className="absolute right-3 top-1/2 transform -translate-y-1/2 text-IconText cursor-pointer" />
+                  )}
+                </button>
+                <input
+                  type={showPass ? "text" : "password"}
+                  name="password"
+                  placeholder="Password"
+                  className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-InputRing"
+                  required
+                />
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                className="w-full bg-bgBtn text-white py-2 rounded-lg hover:bg-hoverBtn transition duration-200">
+                Sign In
               </button>
-            ) : (
-              <button type="button" onClick={() => setShowPass(!showPass)}>
-                <FaRegEye className="absolute right-3 top-1/2 transform -translate-y-1/2 text-IconText cursor-pointer" />
-              </button>
-            )}
-            <input
-              type={`${!showPass ? "password" : "text"}`}
-              name="password"
-              placeholder="Password"
-              className='w-full pl-10 pr-4 py-2  border rounded-lg focus:outline-none focus:ring-2 focus:ring-InputRing'
-              required
-            />
+            </form>
+
+            {/* Divider */}
+            <div className="flex items-center justify-center mt-4">
+              <hr className="w-full border-gray-300" />
+              <span className="px-3 text-gray-500">or</span>
+              <hr className="w-full border-gray-300" />
+            </div>
+
+            {/* Google Login */}
+            <button
+              onClick={handleGoogleLogin}
+              className="w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition duration-200 flex items-center justify-center gap-2 mt-4">
+              <FaGoogle />
+              Sign in with Google
+            </button>
+
+            {/* Register Link */}
+            <p className="text-center text-sm mt-4">
+              Don't have an account?{" "}
+              <Link to="/register" className="text-blue-500 hover:underline">
+                Sign up
+              </Link>
+            </p>
           </div>
-          <button
-            type="submit"
-            className="w-full cursor-pointer bg-bgBtn hover:bg-hoverBtn text-white py-2 rounded-lg transition duration-200">
-            Sign In
-          </button>
-        </form>
-        <div className="flex items-center justify-center mt-4">
-          <hr className="w-full border-gray-300" />
-          <span className="px-3 text-gray-500">or</span>
-          <hr className="w-full border-gray-300" />
         </div>
-        <button
-          onClick={handleGoogleLogin}
-          className="w-full cursor-pointer bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition duration-200 flex items-center justify-center gap-2 mt-4">
-          <FaGoogle />
-          Sign in with Google
-        </button>
-        <p
-          className='text-center text-sm mt-4'>
-          Don't have an account?
-          <Link to="/register" className="text-blue-500 hover:underline">
-            Sign up
-          </Link>
-        </p>
       </div>
     </div>
   );

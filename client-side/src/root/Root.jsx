@@ -13,7 +13,7 @@ const Root = () => {
         <Loading></Loading>
       ) : (
         // Root component: main entry point for the application layout
-        <div className="bg-base dark:bg-darkBase dark:text-darkContent">
+        <div className="bg-base max-w-[2500px] mx-auto text-black dark:bg-darkBase dark:text-darkContent">
           <header>
             <NavBar></NavBar>
           </header>

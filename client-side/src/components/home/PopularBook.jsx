@@ -7,7 +7,7 @@ const PopularBook = ({ popularBook }) => {
       <h2 className="text-4xl font-bold text-center mb-8">Popular Books</h2>
       {popularBook?.length === 0 ? <BooksNotFound></BooksNotFound>
       :
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 [1600px]:grid-cols-4 gap-10">
         {popularBook.map((book) => (
           <PopularSingleBook key={book._id} book={book}></PopularSingleBook>
         ))}

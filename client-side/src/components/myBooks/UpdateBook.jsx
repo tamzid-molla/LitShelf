@@ -78,195 +78,163 @@ const [bookCategory, setBookCategory] = useState('');
                     <h1 className="text-2xl font-bold">Update this Book</h1>
                   </div>
                   <p className="mt-2 text-md">
-                    Update your favorite book with the community!
+                    Update your {book_title} book
                   </p>
                 </div>
         
                 {/* Form */}
                  <form onSubmit={handleBookSubmit} className="p-6">
-                  <div className="space-y-5">
-                    {/* Book Title */}
-                    <div>
-                      <label className="block text-sm font-medium mb-1">
-                        Book Title
-                      </label>
-                <input
-                  defaultValue={book_title}
-                  required
-                        type="text"
-                        name="book_title"
-                        placeholder="Enter book title"
-                        className="w-full p-3 border rounded-md focus:ring-2 focus:ring-bgBtn"
-                      />
-                    </div>
-        
-                    {/* Cover Photo URL */}
-                    <div>
-                      <label className="block text-sm font-medium mb-1">
-                        Cover Photo URL
-                      </label>
-                <input
-                  required
-                  defaultValue={cover_photo}
-                        type="url"
-                        name="cover_photo"
-                        placeholder="Enter cover photo URL"
-                        className="w-full p-3 border rounded-md focus:ring-2 focus:ring-bgBtn"
-                      />
-                    </div>
-        
-                    {/* Total Pages */}
-                    <div>
-                      <label className="block text-sm font-medium mb-1">
-                        Total Pages
-                      </label>
-                <input
-                  defaultValue={total_page}
-                  required
-                        type="number"
-                        name="total_page"
-                        placeholder="Enter total pages"
-                        className="w-full p-3 border rounded-md focus:ring-2 focus:ring-bgBtn"
-                      />
-                    </div>
-        
-                    {/* Book Author */}
-                    <div>
-                      <label className="block text-sm font-medium mb-1">
-                        Book Author
-                      </label>
-                <input
-                  defaultValue={book_author}
-                  required
-                        type="text"
-                        name="book_author"
-                        placeholder="Enter author name"
-                        className="w-full p-3 border rounded-md focus:ring-2 focus:ring-bgBtn"
-                      />
-                    </div>
-        
-                    {/* User Email (Read-Only) */}
-                    <div>
-                      <label className="block text-sm font-medium mb-1">
-                        Your Email
-                      </label>
-                      <div className="relative">
-                        <input
-                          type="email"
-                          name="user_email"
-                          value={user.email}
-                          readOnly
-                          className="w-full p-3 border border-gray-300 rounded-md bg-gray-100 text-gray-500 cursor-not-allowed"
-                        />
-                        <FaEnvelope className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                      </div>
-                    </div>
-        
-                    {/* User Name (Read-Only) */}
-                    <div>
-                      <label className="block text-sm font-medium mb-1">
-                        Your Name
-                      </label>
-                      <div className="relative">
-                        <input
-                          type="text"
-                          name="user_name"
-                          value={user.displayName}
-                          readOnly
-                          className="w-full p-3 border border-gray-300 rounded-md bg-gray-100 text-gray-500 cursor-not-allowed"
-                        />
-                        <FaUser className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                      </div>
-                    </div>
-        
-                    {/* Book Category */}
-                    <div>
-                      <label className="block text-sm font-medium mb-1">
-                        Book Category
-                      </label>
-                <select
-                  value={bookCategory}
-    onChange={(e) => setReadingStatus(e.target.value)}
-                  required
-                        name="book_category"
-                        className="w-full dark:bg-darkBase-secondary p-3 border rounded-md focus:ring-2 focus:ring-bgBtn"
-                      >
-                        <option value="">Select a category</option>
-                        <option value="Fiction">Fiction</option>
-                        <option value="Non-Fiction">Non-Fiction</option>
-                        <option value="Fantasy">Fantasy</option>
-                      </select>
-                    </div>
-        
-                    {/* Reading Status */}
-                    <div>
-                      <label className="block text-sm font-medium mb-1">
-                        Reading Status
-                      </label>
-                <select
-                   value={readingStatus}
-    onChange={(e) => setReadingStatus(e.target.value)}
-                  required
-                        name="reading_status"
-                        className="w-full dark:bg-darkBase-secondary p-3 border rounded-md focus:ring-2 focus:ring-bgBtn"
-                      >
-                        <option value="">Select status</option>
-                        <option value="Read">Read</option>
-                        <option value="Reading">Reading</option>
-                        <option value="Want-to-Read">Want-to-Read</option>
-                      </select>
-                    </div>
-        
-                    {/* Book Overview */}
-                    <div>
-                      <label className="block text-sm font-medium mb-1">
-                        Book Overview
-                      </label>
-                <textarea
-                  defaultValue={book_overview}
-                  required
-                        name="book_overview"
-                        placeholder="Enter book overview"
-                        className="w-full p-3 border rounded-md focus:ring-2 focus:ring-bgBtn"
-                        rows="5"
-                      ></textarea>
-                    </div>
-        
-                    {/* Likes (Read-Only) */}
-                    <div>
-                      <label className="block text-sm font-medium mb-1">
-                        Likes
-                      </label>
-                      <div className="relative">
-                        <input
-                          type="number"
-                          name="upvote"
-                          value={0}
-                          readOnly
-                          className="w-full p-3 border border-gray-300 rounded-md bg-gray-100 text-gray-500 cursor-not-allowed"
-                        />
-                        <FaHeart className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                      </div>
-                    </div>
-        
-                    {/* Submit Button */}
-                    <div className="flex gap-4">
-                      <button
-                        type="submit"
-                        className="bg-bgBtn cursor-pointer hover:bg-hoverBtn text-white px-6 py-3 rounded-md transition-colors"
-                      >
-                        Update Book
-                      </button>
-                <button
-                  onClick={ ()=>navigate(-1) }
-                        type="button"
-                        className="bg-gray-300 text-gray-800 px-6 py-3 rounded-md hover:bg-gray-400 transition-colors"
-                      >
-                        Cancel
-                      </button>
-                    </div>
-                  </div>
-                </form>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {/* Book Title */}
+    <div>
+      <label className="block text-sm font-medium mb-1">Book Title</label>
+      <input
+        defaultValue={book_title}
+        required
+        type="text"
+        name="book_title"
+        placeholder="Enter book title"
+        className="w-full p-3 border rounded-md focus:ring-2 focus:ring-bgBtn"
+      />
+    </div>
+
+    {/* Cover Photo URL */}
+    <div>
+      <label className="block text-sm font-medium mb-1">Cover Photo URL</label>
+      <input
+        required
+        defaultValue={cover_photo}
+        type="url"
+        name="cover_photo"
+        placeholder="Enter cover photo URL"
+        className="w-full p-3 border rounded-md focus:ring-2 focus:ring-bgBtn"
+      />
+    </div>
+
+    {/* Total Pages */}
+    <div>
+      <label className="block text-sm font-medium mb-1">Total Pages</label>
+      <input
+        defaultValue={total_page}
+        required
+        type="number"
+        name="total_page"
+        placeholder="Enter total pages"
+        className="w-full p-3 border rounded-md focus:ring-2 focus:ring-bgBtn"
+      />
+    </div>
+
+    {/* Book Author */}
+    <div>
+      <label className="block text-sm font-medium mb-1">Book Author</label>
+      <input
+        defaultValue={book_author}
+        required
+        type="text"
+        name="book_author"
+        placeholder="Enter author name"
+        className="w-full p-3 border rounded-md focus:ring-2 focus:ring-bgBtn"
+      />
+    </div>
+
+    {/* User Email */}
+    <div>
+      <label className="block text-sm font-medium mb-1">Your Email</label>
+      <div className="relative">
+        <input
+          type="email"
+          name="user_email"
+          value={user.email}
+          readOnly
+          required
+          className="w-full p-3 border border-gray-300 rounded-md bg-gray-100 text-gray-500 cursor-not-allowed"
+        />
+        <FaEnvelope className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+      </div>
+    </div>
+
+    {/* User Name */}
+    <div>
+      <label className="block text-sm font-medium mb-1">Your Name</label>
+      <div className="relative">
+        <input
+          type="text"
+          name="user_name"
+          value={user.displayName}
+          readOnly
+          required
+          className="w-full p-3 border border-gray-300 rounded-md bg-gray-100 text-gray-500 cursor-not-allowed"
+        />
+        <FaUser className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+      </div>
+    </div>
+
+    {/* Book Category */}
+    <div>
+      <label className="block text-sm font-medium mb-1">Book Category</label>
+      <select
+        value={bookCategory}
+        onChange={(e) => setBookCategory(e.target.value)}
+        required
+        name="book_category"
+        className="w-full dark:bg-darkBase-secondary p-3 border rounded-md focus:ring-2 focus:ring-bgBtn"
+      >
+        <option value="">Select a category</option>
+        <option value="Fiction">Fiction</option>
+        <option value="Non-Fiction">Non-Fiction</option>
+        <option value="Fantasy">Fantasy</option>
+      </select>
+    </div>
+
+    {/* Reading Status */}
+    <div>
+      <label className="block text-sm font-medium mb-1">Reading Status</label>
+      <select
+        value={readingStatus}
+        onChange={(e) => setReadingStatus(e.target.value)}
+        required
+        name="reading_status"
+        className="w-full dark:bg-darkBase-secondary p-3 border rounded-md focus:ring-2 focus:ring-bgBtn"
+      >
+        <option value="">Select status</option>
+        <option value="Read">Read</option>
+        <option value="Reading">Reading</option>
+        <option value="Want-to-Read">Want-to-Read</option>
+      </select>
+    </div>
+
+    {/* Book Overview - full width (span 2 columns) */}
+    <div className="md:col-span-2">
+      <label className="block text-sm font-medium mb-1">Book Overview</label>
+      <textarea
+        defaultValue={book_overview}
+        required
+        name="book_overview"
+        placeholder="Enter book overview"
+        className="w-full p-3 border rounded-md focus:ring-2 focus:ring-bgBtn"
+        rows="5"
+      ></textarea>
+    </div>
+
+    {/* Submit & Cancel Buttons - full width */}
+    <div className="md:col-span-2 flex gap-4">
+      <button
+        type="submit"
+        className="bg-bgBtn cursor-pointer hover:bg-hoverBtn text-white px-6 py-3 rounded-md transition-colors"
+      >
+        Update Book
+      </button>
+      <button
+        onClick={() => navigate(-1)}
+        type="button"
+        className="bg-gray-300 text-gray-800 px-6 py-3 rounded-md hover:bg-gray-400 transition-colors"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</form>
+
               </div>
             </div>
     );

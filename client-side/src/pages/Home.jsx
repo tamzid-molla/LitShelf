@@ -9,6 +9,7 @@ import TotalStates from "../components/home/TotalStates";
 import FeaturedCategories from "../components/home/FeaturedCategories";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import axios from "axios";
+import HowItWorks from "../components/home/HowItWorks";
 
 const Home = () => {
   const [allUser, setAllUser] = useState(0);
@@ -61,9 +62,10 @@ const Home = () => {
   }
   return (
         <div className="min-h-screen pt-40">
-          <Banner></Banner>
-            <PopularBook popularBook={popularBook}></PopularBook>
+      <Banner></Banner>
+      <HowItWorks></HowItWorks>
             <FeaturedCategories categories={categories}></FeaturedCategories>
+            <PopularBook popularBook={popularBook}></PopularBook>
             <NewReleases books={books}></NewReleases>
             <TotalStates allBook={allBook} allReview={allReview} allUser={allUser} ></TotalStates>
         </div>

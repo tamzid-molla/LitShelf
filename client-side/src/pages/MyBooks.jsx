@@ -38,7 +38,7 @@ const MyBooks = () => {
             <h1 className="text-4xl font-extrabold text-center mb-8">
             My Books
           </h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+            <div className="flex flex-col items-center md:grid md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
                 {
                     myBooks.map(myBook=> <MyBook key={myBook._id} setMyBooks={setMyBooks} myBook={myBook}></MyBook> )
                 }

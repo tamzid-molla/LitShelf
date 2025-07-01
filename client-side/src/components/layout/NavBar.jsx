@@ -15,7 +15,7 @@ const NavBar = () => {
     //Hamburger menu for mobile device 
     const [menuOpen, setMenuOpen] = useState(false);
     //Dark mode state from ThemContext
-    const { darkMode, setDarkMode } = useContext(ThemContext);
+    const { darkMode, setDarkMode,toggleDarkMode  } = useContext(ThemContext);
     //Navigate variable 
     const navigate = useNavigate();
     
@@ -58,7 +58,7 @@ const NavBar = () => {
           {/* Login , Register and Toggle theme*/}
           <div className="flex gap-7 items-center">
             <button
-              onClick={() => setDarkMode(!darkMode)}
+              onClick={toggleDarkMode}
               className="cursor-pointer">
               {darkMode ? (
                 <MdDarkMode size={30}></MdDarkMode>

@@ -12,6 +12,7 @@ import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../context/FirebaseContext";
 import Swal from "sweetalert2";
 import axios from "axios";
+import registerImage from "../assets/SignUp.png"
 
 const Register = () => {
   const [passShow, setPassShow] = useState(false);
@@ -179,109 +180,130 @@ const Register = () => {
   }, []);
 
   return (
-    <div className="min-h-screen py-20 flex items-center justify-center">
-      <div className="p-8 rounded-lg shadow-lg mt-10 w-full max-w-md bg-base-secondary dark:bg-darkBase-secondary">
-        <h2 className="text-2xl font-bold text-center mb-6">
+     <div className="min-h-screen pt-16 w-11/12 mx-auto px-4 mb-16 rounded-2xl md:px-8 bg-base-secondary dark:bg-darkBase-secondary flex items-center justify-center">
+      <div className=" rounded-xl w-full max-w-6xl p-6 md:p-10">
+
+        {/* Heading center */}
+        <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800 dark:text-white mb-10">
           Register Account
         </h2>
-        <form onSubmit={handleRegister} className="space-y-4">
-          <div className="relative">
-            <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-IconText" />
-            <input
-              type="text"
-              name="name"
-              placeholder="Full Name"
-              className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-InputRing"
-              required
-            />
-          </div>
-          <div className="relative">
-            <FaEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-IconText" />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-InputRing"
-              required
-            />
-          </div>
-          <div className="relative">
-            <FaLink className="absolute left-3 top-1/2 transform -translate-y-1/2 text-IconText" />
-            <input
-              type="url"
-              required
-              name="photoURL"
-              placeholder="Photo URL"
-              className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-InputRing"
-            />
-          </div>
-          <div className="relative">
-            <FaLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-IconText" />
-            {!passShow ? (
-              <button type="button" onClick={() => setPassShow(!passShow)}>
-                <FaEyeSlash className="absolute right-3 top-1/2 transform -translate-y-1/2 text-IconText cursor-pointer" />
-              </button>
-            ) : (
-              <button type="button" onClick={() => setPassShow(!passShow)}>
-                <FaRegEye className="absolute right-3 top-1/2 transform -translate-y-1/2 text-IconText cursor-pointer" />
-              </button>
-            )}
 
-            <input
-              type={`${!passShow ? "password" : "text"}`}
-              name="password"
-              placeholder="Password"
-              className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-InputRing"
-              required
-            />
+        {/* Grid content (image + form) */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          
+          {/* Left: Image */}
+          <div className="hidden lg:block">
+            <img src={registerImage} alt="Register" className="w-full h-auto object-contain" />
           </div>
-          <div className="relative">
-            <FaLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-IconText" />
-            {!confirmPassShow ? (
-              <button
-                type="button"
-                onClick={() => setConfirmPassShow(!confirmPassShow)}>
-                <FaEyeSlash className="absolute right-3 top-1/2 transform -translate-y-1/2 text-IconText cursor-pointer" />
-              </button>
-            ) : (
-              <button
-                type="button"
-                onClick={() => setConfirmPassShow(!confirmPassShow)}>
-                <FaRegEye className="absolute right-3 top-1/2 transform -translate-y-1/2 text-IconText cursor-pointer" />
-              </button>
-            )}
 
-            <input
-              type={`${!confirmPassShow ? "password" : "text"}`}
-              name="confirmPassword"
-              placeholder="Confirm Password"
-              className="w-full pl-10 pr-4 py-2  border rounded-lg focus:outline-none focus:ring-2 focus:ring-InputRing"
-              required
-            />
+          {/* Right: Form */}
+          <div>
+            <form onSubmit={handleRegister} className="space-y-4">
+
+              {/* Full Name */}
+              <div className="relative">
+                <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-IconText" />
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Full Name"
+                  className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-InputRing"
+                  required
+                />
+              </div>
+
+              {/* Email */}
+              <div className="relative">
+                <FaEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-IconText" />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-InputRing"
+                  required
+                />
+              </div>
+
+              {/* Photo URL */}
+              <div className="relative">
+                <FaLink className="absolute left-3 top-1/2 transform -translate-y-1/2 text-IconText" />
+                <input
+                  type="url"
+                  name="photoURL"
+                  placeholder="Photo URL"
+                  className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-InputRing"
+                  required
+                />
+              </div>
+
+              {/* Password */}
+              <div className="relative">
+                <FaLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-IconText" />
+                <button type="button" onClick={() => setPassShow(!passShow)}>
+                  {passShow ? (
+                    <FaRegEye className="absolute right-3 top-1/2 transform -translate-y-1/2 text-IconText cursor-pointer" />
+                  ) : (
+                    <FaEyeSlash className="absolute right-3 top-1/2 transform -translate-y-1/2 text-IconText cursor-pointer" />
+                  )}
+                </button>
+                <input
+                  type={passShow ? "text" : "password"}
+                  name="password"
+                  placeholder="Password"
+                  className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-InputRing"
+                  required
+                />
+              </div>
+
+              {/* Confirm Password */}
+              <div className="relative">
+                <FaLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-IconText" />
+                <button type="button" onClick={() => setConfirmPassShow(!confirmPassShow)}>
+                  {confirmPassShow ? (
+                    <FaRegEye className="absolute right-3 top-1/2 transform -translate-y-1/2 text-IconText cursor-pointer" />
+                  ) : (
+                    <FaEyeSlash className="absolute right-3 top-1/2 transform -translate-y-1/2 text-IconText cursor-pointer" />
+                  )}
+                </button>
+                <input
+                  type={confirmPassShow ? "text" : "password"}
+                  name="confirmPassword"
+                  placeholder="Confirm Password"
+                  className="w-full pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-InputRing"
+                  required
+                />
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                className="w-full bg-bgBtn text-white py-2 rounded-lg hover:bg-hoverBtn transition duration-200">
+                Sign Up
+              </button>
+            </form>
+
+            {/* Divider + Google Login */}
+            <div className="flex items-center justify-center mt-4">
+              <hr className="w-full border-gray-300" />
+              <span className="px-3 text-gray-500">or</span>
+              <hr className="w-full border-gray-300" />
+            </div>
+
+            <button
+              onClick={handleGoogleLogin}
+              className="w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition duration-200 flex items-center justify-center gap-2 mt-4">
+              <FaGoogle />
+              Sign in with Google
+            </button>
+
+            <p className="text-center text-sm mt-4">
+              Already have an account?{" "}
+              <Link to="/login" className="text-blue-500 hover:underline">
+                Login
+              </Link>
+            </p>
           </div>
-          <button
-            type="submit"
-            className="w-full bg-bgBtn text-white py-2 rounded-lg cursor-pointer hover:bg-hoverBtn transition duration-200">
-            Sign Up
-          </button>
-        </form>
-        <div className="flex items-center justify-center mt-4">
-          <hr className="w-full border-gray-300" />
-          <span className="px-3 text-gray-500">or</span>
-          <hr className="w-full border-gray-300" />
         </div>
-        <button
-          onClick={handleGoogleLogin}
-          className="w-full bg-red-500 cursor-pointer text-white py-2 rounded-lg hover:bg-red-600 transition duration-200 flex items-center justify-center gap-2 mt-4">
-          <FaGoogle />
-          Sign in with Google
-        </button>
-        <p className="text-center text-sm mt-4">
-          Already have an account?{" "}
-          <Link to="/login" className="text-blue-500 hover:underline">
-            Login
-          </Link>
-        </p>
       </div>
     </div>
   );

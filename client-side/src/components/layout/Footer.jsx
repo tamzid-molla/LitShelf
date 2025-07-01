@@ -1,4 +1,4 @@
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { FaFacebook, FaGithub , FaLinkedin } from 'react-icons/fa';
 import logo from '../../assets/logo.png'
 import { Link } from 'react-router';
 
@@ -19,10 +19,10 @@ const Footer = () => {
           {/* Contact Details */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-            <p className="text-gray-400">123 Business Street</p>
-            <p className="text-gray-400">City, Country 12345</p>
-            <p className="text-gray-400">Email: info@litshelf.com</p>
-            <p className="text-gray-400">Phone: +1 (123) 456-7890</p>
+            <p className="text-gray-400">Shohid Mishru Sarok</p>
+            <p className="text-gray-400">Jhenaidah Bangladesh</p>
+            <p className="text-gray-400">Email: tamzidmolla.dev@gmail.com</p>
+            <p className="text-gray-400">Phone: +8801864959549</p>
           </div>
 
           {/* Quick Links */}
@@ -30,18 +30,13 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <Link className="text-gray-400 hover:text-white transition-colors">
-                  Terms & Conditions
+                <Link to='/' className="text-gray-400 hover:text-white transition-colors">
+                  Home
                 </Link>
               </li>
               <li>
-                <Link className="text-gray-400 hover:text-white transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link className="text-gray-400 hover:text-white transition-colors">
-                  About Us
+                <Link to='/bookshelf' className="text-gray-400 hover:text-white transition-colors">
+                  BookShelf
                 </Link>
               </li>
             </ul>
@@ -51,16 +46,13 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
             <div className="flex space-x-4">
-              <Link to="https://facebook.com" target="_blank"  className="text-gray-400 hover:text-white transition-colors">
+              <Link to="https://www.facebook.com/monhara.pakhi.549668" target="_blank"  className="text-gray-400 hover:text-white transition-colors">
                 <FaFacebook size={24} />
               </Link>
-              <Link to="https://twitter.com" target="_blank"  className="text-gray-400 hover:text-white transition-colors">
-                <FaTwitter size={24} />
+              <Link to="https://github.com/tamzid-molla" target="_blank"  className="text-gray-400 hover:text-white transition-colors">
+                <FaGithub  size={24}/>
               </Link>
-              <Link to="https://instagram.com" target="_blank" className="text-gray-400 hover:text-white transition-colors">
-                <FaInstagram size={24} />
-              </Link>
-              <Link to="https://linkedin.com" target="_blank" className="text-gray-400 hover:text-white transition-colors">
+              <Link to="https://www.linkedin.com/in/tamzid-molla-9b5b46371/" target="_blank" className="text-gray-400 hover:text-white transition-colors">
                 <FaLinkedin size={24} />
               </Link>
             </div>
