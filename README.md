@@ -65,7 +65,7 @@ With secure authentication, rich search, interactive shelves, and real-time upda
 
 ### 🌐 Live Demo
 
-🔗 [https://assignment11-tamzid.surge.sh/](https://assignment11-tamzid.surge.sh/)
+🔗 [https://lit-shelf-client.vercel.app/](https://lit-shelf-client.vercel.app/)
 
 ---
 

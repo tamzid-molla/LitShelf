@@ -1,13 +1,14 @@
 import { createBrowserRouter } from "react-router";
 import Root from "../root/Root";
+import DashboardLayout from "../root/DashboardLayout";
 import Home from "../pages/Home";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import Bookshelf from "../pages/Bookshelf";
 import BookDetails from "../pages/BookDetails";
-import AddBook from "../pages/AddBook";
 import MyBooks from "../pages/MyBooks";
 import Profile from "../pages/Profile";
+import Dashboard from "../pages/Dashboard";
 import PrivateRoute from "../private/PrivateRoute";
 import RatingContext from "../context/RatingContext";
 import UpdateBook from "../components/myBooks/UpdateBook";
@@ -44,12 +45,6 @@ const router = createBrowserRouter([
                 </PrivateRoute>
             },
             {
-                path: '/addBook',
-                element: <PrivateRoute>
-                    <AddBook></AddBook>
-                </PrivateRoute>
-            },
-            {
                 path: '/myBooks',
                 element: <PrivateRoute>
                     <MyBooks></MyBooks>
@@ -72,6 +67,18 @@ const router = createBrowserRouter([
             {
                 path: "*",
                 Component: ErrorPage
+            }
+        ]
+    },
+    {
+        path: "/dashboard",
+        element: <PrivateRoute>
+            <DashboardLayout />
+        </PrivateRoute>,
+        children: [
+            {
+                index: true,
+                Component: Dashboard
             }
         ]
     }

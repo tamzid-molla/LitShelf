@@ -11,7 +11,7 @@ const FeaturedCategories = ({categories}) => {
   return (
     <section className="py-16 rounded-2xl w-11/12 my-28 mx-auto px-6 bg-base-secondary dark:bg-darkBase-secondary flex items-center justify-center">
   <div className="pb-20">
-    <h2 className="text-3xl font-extrabold text-center mb-12 tracking-tight">
+    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-center mb-12 tracking-tight">
       Explore Our Featured Categories
         </h2>
         {
@@ -23,8 +23,8 @@ const FeaturedCategories = ({categories}) => {
           <motion.div
               initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0,scale:1.01 }}
-      transition={{ duration: 0.4 }}
-      whileHover={{ scale: 1.1, transition: { duration: 0.5 } }}
+      transition={{ duration: 0.3 }}
+      whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
           key={cat.category}
           className="relative bg-white dark:bg-gray-800 shadow-xl rounded-xl overflow-hidden"
         >

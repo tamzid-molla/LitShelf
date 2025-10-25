@@ -56,6 +56,11 @@ async function run() {
     //Post API to added user in DB
     app.post('/users', async (req, res) => {
       const data = req.body;
+      // Set default role as 'user' if not provided
+      if (!data.role) {
+        data.role = 'user';
+      }
+      data.createdAt = new Date();
       const result = await userCollections.insertOne(data);
       res.send(result);
     })
@@ -77,6 +82,62 @@ app.get('/users/all', async (req, res) => {
     //Get API to fetch all users
     app.get('/users', async (req, res) => {
       const result = await userCollections.find().toArray();
+      res.send(result);
+    })
+
+    //Get API to fetch user by email
+    app.get('/users/:email', verifyJWT, async (req, res) => {
+      const email = req.params.email;
+      const tokenEmail = req?.tokenEmail;
+      if (tokenEmail !== email) {
+        return res.status(403).send({ message: "Forbidden Access" });
+      }
+      const result = await userCollections.findOne({ email: email });
+      res.send(result);
+    })
+
+    //Patch API to update user role (Admin only)
+    app.patch('/users/role/:email', verifyJWT, async (req, res) => {
+      const email = req.params.email;
+      const { role } = req.body;
+      const tokenEmail = req?.tokenEmail;
+      
+      // Check if requester is admin
+      const requester = await userCollections.findOne({ email: tokenEmail });
+      if (requester?.role !== 'admin') {
+        return res.status(403).send({ message: "Forbidden Access: Admin only" });
+      }
+      
+      const result = await userCollections.updateOne(
+        { email: email },
+        { $set: { role: role } }
+      );
+      res.send(result);
+    })
+
+    //Patch API to update user profile
+    app.patch('/users/:email', async (req, res) => {
+      const email = req.params.email;
+      const { name, photoURL, phone, location, bio, website, favoriteGenre, readingGoal } = req.body;
+      
+      const updateDoc = {
+        $set: {
+          name: name,
+          photoURL: photoURL,
+          phone: phone,
+          location: location,
+          bio: bio,
+          website: website,
+          favoriteGenre: favoriteGenre,
+          readingGoal: readingGoal,
+          updatedAt: new Date()
+        }
+      };
+      
+      const result = await userCollections.updateOne(
+        { email: email },
+        updateDoc
+      );
       res.send(result);
     })
 
@@ -143,7 +204,7 @@ app.get('/users/all', async (req, res) => {
     
     // Get API to fetch top 6 books sorted by upvotes
     app.get('/books/top', async (req, res) => {
-      const result = await bookCollections.find().sort({upvote: -1}).limit(6).toArray();
+      const result = await bookCollections.find().sort({upvote: -1}).limit(5).toArray();
       res.send(result);
     })
     
@@ -206,7 +267,7 @@ app.get('/users/all', async (req, res) => {
 
     //Get API to fetch new added books
     app.get('/books/recent/top', async (req, res) => {
-      const result = await bookCollections.find().sort({ createdAt: -1 }).limit(6).toArray();
+      const result = await bookCollections.find().sort({ createdAt: -1 }).limit(5).toArray();
       res.send(result);
     })
 
